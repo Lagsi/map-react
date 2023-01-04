@@ -15,7 +15,7 @@ function App() {
 
     try {
       fetch(
-        `https://content.guardianapis.com/search?show-tags=contributor&show-references=author&order-by=newest&q=${country}&show-fields=thumbnail&api-key=${
+        `https://content.guardianapis.com/search?show-tags=contributor&show-references=author&q=${country}&show-fields=thumbnail&api-key=${
           import.meta.env.VITE_GUARDIAN_API
         }`
       )
@@ -41,7 +41,9 @@ function App() {
           return (
             <div key={index} className="card">
               <div className="card-image">
-                <img src={article.fields.thumbnail} alt="" />
+                {article.fields && (
+                  <img src={article.fields.thumbnail} alt="" />
+                )}
               </div>
               <div className="category">{article.pillarName}</div>
               <div className="heading">
