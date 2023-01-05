@@ -29,7 +29,10 @@ function App() {
       <div className="map-container">
         <SVGMap map={World} onLocationClick={onClick} />
       </div>
-      <Articles data={data} />
+      <div className="articles-container">
+        <Articles data={data} />
+      </div>
+
     </>
   );
 }
