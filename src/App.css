@@ -16,9 +16,9 @@
 .articles {
   display: grid;
   width: 100%;
-  margin: 0.5rem auto;
+  margin: auto;
   gap: 1rem;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-template-rows: auto;
   padding: 0 2rem;
 }
@@ -26,7 +26,7 @@
 .articles-container {
   width: 100%;
   margin: 0 auto;
-  padding: auto
+  padding-bottom: 1rem;
 }
 
 /* CSS CARD FROM: https://uiverse.io/alexmaracinaru/purple-zebra-61  */
@@ -49,6 +49,8 @@
 .card-image img {
   width: 100%;
   border-radius: 6px;
+  object-fit: cover;
+  height: 10rem;
 }
 
 .card-image:hover {
@@ -99,22 +101,32 @@
   cursor: pointer;
 }
 
+@media (max-width: 1500px) {
+  .articles {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
 
-
-@media (max-width: 800px) {
+@media (max-width: 1200px) {
   .articles {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .articles {
     grid-template-columns: repeat(2, 1fr);
   }
+  .card {
+    height: 22rem;
+  }
 }
 
-@media (max-width: 376px) {
+@media (max-width: 450px) {
   .articles {
     grid-template-columns: repeat(1, 1fr);
+  }
+  .card {
+    height: 24rem;
   }
 }

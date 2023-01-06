@@ -1,30 +1,45 @@
-import React from 'react'
+import React from "react";
 
 function Article({ article }) {
-    return (
-        <div className="card">
-            <a href={article.webUrl} target={'_blank'}>
-                <div className="card-image">
-                    {article.fields && (
-
-                        <img src={article.fields.thumbnail} alt="" />
-                    )}
-                </div>
-            </a>
-            <div className="category">{article.pillarName}</div>
-            <div className="heading"> <a target={'_blank'} href={article.webUrl}>{article.webTitle}</a>
-                <div className="author">
-                    {article.tags.length > 0 && (
-                        <span>
-                            <a href={article.tags[0].webUrl}>
-                                {article.tags[0].webTitle}
-                            </a>
-                        </span>
-                    )}
-                </div>
-            </div>
+  return (
+    <div className="card">
+      <a href={article.link} target={"_blank"}>
+        <div className="card-image">
+          {article.media && <img src={article.media} alt="" />}
         </div>
-    )
+      </a>
+      <div className="category">{article.topic}</div>
+      <div className="heading">
+        {" "}
+        <a target={"_blank"} href={article.link}>
+          {article.title}
+        </a>
+        <div className="author">
+          {article.author && (
+            <span>
+              <a href={`https://www.google.com/search?q=${article.author}`}>
+                {article.author}
+              </a>
+            </span>
+          )}
+          {article.authors && !article.author && (
+            <span>
+              <a href={`https://www.google.com/search?q=${article.authors}`}>
+                {article.authors}
+              </a>
+            </span>
+          )}
+          {!article.authors && !article.author && (
+            <span>
+              <a target={"_blank"} href={"https://" + article.clean_url}>
+                {article.clean_url}
+              </a>
+            </span>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default Article
+export default Article;
