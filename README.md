@@ -9,6 +9,10 @@ The app is still in development and is not AT ALL finished.
 [Nima](https://github.com/n13a)  
 [Jeppe](https://github.com/JeppeHauman)
 
- 
+## Powered by
 
 Application is powered by https://newscatcherapi.com/, best news api there is. 
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
