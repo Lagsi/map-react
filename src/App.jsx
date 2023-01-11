@@ -6,6 +6,9 @@ import Articles from "./components/Articles";
 import "react-svg-map/lib/index.css";
 import "./App.css";
 import HoverDisplay from "./components/hoverDisplay";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import About from "./components/About";
+import Header from "./components/Header";
 
 // function hoverDisplay({ country }) {
 //   return (
@@ -27,7 +30,7 @@ function App() {
   const scrollToNews = () => {
     // myElement.current.scrollIntoView({ behavior: "smooth", block: "end" });
     window.scrollTo({
-      top: 500,
+      top: 800,
       behavior: "smooth",
     });
   };
@@ -36,7 +39,7 @@ function App() {
     const country = getLocationName(event);
     try {
       fetch(
-        `https://api.newscatcherapi.com/v2/search?q=${country}&lang=en,fa&search_in=title&sort_by=date&sources=ap.org,reuters.com,cnn.com,bbc.com,iranintl.com
+        `https://api.newscatcherapi.com/v2/search?q=${country}&lang=en,fa&search_in=title&sort_by=date&sources=ap.org,reuters.com,cnn.com,bbc.com,iranintl.com,bbc.co.uk,nytimes.com,theguardian.com,
         `,
         {
           headers: {
@@ -50,7 +53,7 @@ function App() {
             setTimeout(() => {
               try {
                 fetch(
-                  `https://api.newscatcherapi.com/v2/search?q=${country}&lang=en,fa&search_in=title&sort_by=date&not_sources=cts.businesswire.com
+                  `https://api.newscatcherapi.com/v2/search?q=${country}&lang=en,fa&search_in=title&sort_by=date&not_sources=cts.businesswire.com,intelligenceonline.com
               `,
                   {
                     headers: {
@@ -70,12 +73,14 @@ function App() {
                       return false;
                     });
                     setData(filteredArr);
+                    console.log(filteredArr);
                     scrollToNews();
                   });
               } catch (error) {
                 console.log(error);
               }
             }, 1200);
+            return;
           }
           if (data.articles.length > 4) setData(data.articles);
           scrollToNews();
@@ -86,17 +91,30 @@ function App() {
   };
   return (
     <>
-      <HoverDisplay country={country} />
-      <div ref={myElement} className="map-container">
-        <SVGMap
-          map={World}
-          onLocationClick={onClick}
-          onLocationMouseOver={mouseOver}
-        />
-      </div>
-      <div className="articles-container">
-        <Articles data={data} />
-      </div>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <HoverDisplay country={country} />
+                <div ref={myElement} className="map-container">
+                  <SVGMap
+                    map={World}
+                    onLocationClick={onClick}
+                    onLocationMouseOver={mouseOver}
+                  />
+                </div>
+                <div className="articles-container">
+                  <Articles data={data} />
+                </div>
+              </>
+            }
+          />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

@@ -1,13 +1,38 @@
 #root {
-  width: 100svw;
+  width: 100%;
   height: 100vh;
 }
 html,
 body {
-  width: 100vw;
+  width: 100%;
 }
 body {
   overflow-x: hidden;
+}
+.about {
+  flex: 1;
+  display: inline;
+}
+.header {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+}
+.header h1 {
+  text-align: center;
+  display: inherit;
+}
+.header::after {
+  flex: 1;
+  content: "";
+}
+.words {
+  text-align: center;
+  padding: 0 0.5rem;
+}
+.go-back {
+  padding: 0 0.5rem;
 }
 
 .svg-map {
@@ -51,7 +76,7 @@ body {
 /* CSS CARD FROM: https://uiverse.io/alexmaracinaru/purple-zebra-61  */
 
 .card {
-  width: 100%;
+  max-width: 100%;
   min-height: 24rem;
   background: rgb(30, 30, 30);
   padding: 0.4em;
@@ -154,4 +179,68 @@ body {
   .card {
     min-height: 24rem;
   }
+}
+
+/* ABOUT CARDS */
+
+.about-card-container {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.about-card {
+  width: 200px;
+  min-height: 50px;
+  background: #242424;
+  border-radius: 5px;
+  text-align: center;
+  color: #f0f0f0;
+  font-family: inherit;
+  z-index: 1;
+  border-color: #151515;
+  border: 2px solid;
+}
+
+.about-card .img img {
+  display: flex;
+  margin: 20px auto 10px auto;
+  width: 60%;
+  height: 80%;
+  border: 1px solid #f0f0f0;
+  border-radius: 50%;
+  font-size: 11px;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s;
+  z-index: 99;
+  background-color: #152f50;
+}
+
+.svgs {
+  opacity: 0;
+  transition: all 0.5s;
+  margin: 0.5rem 0;
+}
+
+.about-heading {
+  padding: 10px;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.svgs svg {
+  padding: 0 3px;
+  margin: 0 0.2rem;
+  cursor: pointer;
+}
+
+.about-card:hover .img {
+  transform: scale(1.05);
+  /* border: 1px solid #f0f0f0; */
+}
+
+.about-card:hover h1,
+.about-card:hover .svgs {
+  opacity: 1;
 }
