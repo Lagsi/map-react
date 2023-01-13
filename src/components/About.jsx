@@ -5,7 +5,7 @@ import AboutCard from "./AboutCard";
 function About() {
   return (
     <>
-      <p className="words">This is our baby. We love this map to death</p>
+      <p className="words">In this application, Our main objective is to provide uncensored and unbiased news coverage from countries around the world. This means that all news topics, including human rights, gender equality, politics from various parties, art and sports, should be made accessible to users without selective filtering or editorial bias, as opposed to traditional television news broadcasting policies.</p>
 
       <div className="about-card-container">
         <AboutCard
