@@ -1,6 +1,8 @@
 import React from "react";
 
 function Article({ article }) {
+  const date = new Date(article.published_date).toDateString();
+
   return (
     <div className="card">
       <a href={article.link} target={"_blank"}>
@@ -36,6 +38,8 @@ function Article({ article }) {
               </a>
             </span>
           )}
+
+          <span>{date}</span>
         </div>
       </div>
     </div>

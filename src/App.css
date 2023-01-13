@@ -12,6 +12,13 @@ body {
   overflow-x: hidden;
 }
 
+.not-mobile {
+  display: block;
+}
+.mobile {
+  display: none;
+}
+
 .about {
   flex: 1;
   display: inline;
@@ -22,6 +29,8 @@ body {
   display: flex;
   align-items: center;
   padding: 0 0.5rem;
+  margin: 1rem 0 5rem 0;
+  border-bottom: 3px solid #151515;
 }
 
 .header h1 {
@@ -37,18 +46,29 @@ body {
 .words {
   text-align: center;
   padding: 0 0.5rem;
-  margin: 2rem auto;
+  margin: 2rem auto 7rem auto;
   line-height: 2rem;
-  width: 50%
+  max-width: 50%;
+  font-size: 1.2em;
 }
 
 .go-back {
   padding: 0 0.5rem;
+  background-color: white;
+  color: black;
+  width: fit-content;
+  margin: 4rem auto;
+  border-radius: 6px;
+  padding: 0.3rem 1rem;
+  font-weight: 600;
+}
+
+.react-autocomplete-input {
+  color: black;
 }
 
 .svg-map {
   height: 95vh !important;
-  /* position: absolute; */
   top: 0;
   bottom: 0;
   left: 0;
@@ -72,17 +92,21 @@ body {
   padding-bottom: 1rem;
 }
 
+.clicked-country {
+  text-align: center;
+}
+
 .hover-country {
   font-size: larger;
   text-align: center;
   width: 100%;
+  font-size: 5rem;
   display: block;
   position: absolute;
 }
 
 .hover-display {
   width: 100vw;
-  margin-top: 1rem;
 }
 
 /* CSS CARD FROM: https://uiverse.io/alexmaracinaru/purple-zebra-61  */
@@ -163,7 +187,6 @@ body {
   cursor: pointer;
 }
 
-
 /* ABOUT CARDS */
 
 .about-card-container {
@@ -224,7 +247,6 @@ body {
 
 .about-card:hover .img {
   transform: scale(1.05);
-
 }
 
 .about-card:hover h1,
@@ -244,6 +266,7 @@ body {
   }
 }
 
+/* MOBILE */
 @media (max-width: 800px) {
   .articles {
     grid-template-columns: repeat(2, 1fr);
@@ -251,6 +274,24 @@ body {
 
   .card {
     min-height: 22rem;
+  }
+
+  .mobile {
+    display: block;
+  }
+
+  .words {
+    max-width: 80%;
+  }
+  .about-card-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .svgs {
+    opacity: 1;
+    transition: all 0.5s;
+    margin: 0.5rem 0;
   }
 }
 
