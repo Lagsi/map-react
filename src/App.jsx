@@ -6,17 +6,10 @@ import Articles from "./components/Articles";
 import "react-svg-map/lib/index.css";
 import "./App.css";
 import HoverDisplay from "./components/hoverDisplay";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import About from "./components/About";
 import Header from "./components/Header";
 
-// function hoverDisplay({ country }) {
-//   return (
-//     <div>
-//       <span>{country}</span>
-//     </div>
-//   );
-// }
 
 function App() {
   const [data, setData] = useState([]);
@@ -28,7 +21,7 @@ function App() {
   }
 
   const scrollToNews = () => {
-    // myElement.current.scrollIntoView({ behavior: "smooth", block: "end" });
+
     window.scrollTo({
       top: 800,
       behavior: "smooth",
