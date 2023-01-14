@@ -1,11 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import AboutCard from "./AboutCard";
+import styles from "./About.module.css";
 
 function About() {
   return (
     <>
-      <p className="words">In this application, Our main objective is to provide uncensored and unbiased news coverage from countries around the world. This means that all news topics, including human rights, gender equality, politics from various parties, art and sports, should be made accessible to users without selective filtering or editorial bias, as opposed to traditional television news broadcasting policies.</p>
+      <p className="words">
+        In this application, Our main objective is to provide uncensored and
+        unbiased news coverage from countries around the world. This means that
+        all news topics, including human rights, gender equality, politics from
+        various parties, art and sports, should be made accessible to users
+        without selective filtering or editorial bias, as opposed to traditional
+        television news broadcasting policies.
+      </p>
 
       <div className="about-card-container">
         <AboutCard
@@ -30,8 +38,8 @@ function About() {
           linkedin="https://www.linkedin.com/in/jeppehauman/"
         />
       </div>
-      <Link to="/">
-        <p className="go-back">Go back</p>
+      <Link className={styles["button-wrapper"]} to="/">
+        <button className={styles["go-back"]}>Go back</button>
       </Link>
     </>
   );
