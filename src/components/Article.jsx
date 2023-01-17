@@ -16,6 +16,7 @@ function Article({ article }) {
         <a target={"_blank"} href={article.link}>
           {article.title}
         </a>
+      </div>
         <div className="author">
           {article.author && (
             <span>
@@ -41,7 +42,6 @@ function Article({ article }) {
 
           <span>{date}</span>
         </div>
-      </div>
     </div>
   );
 }

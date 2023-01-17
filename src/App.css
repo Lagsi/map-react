@@ -168,12 +168,13 @@ body {
 
 .author {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   color: gray;
+  padding: 7px;
+  margin-top: auto;
   font-weight: 400;
   font-size: 11px;
-  height: 100%;
-  bottom: 0.5rem;
 }
 
 .author a {
