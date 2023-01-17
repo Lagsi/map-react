@@ -101,7 +101,9 @@ function App() {
     setClickedCountry(country);
     //fetchApiData(country);
     setData(localData.articles);
-    scrollToNews();
+    setTimeout(() => {
+      scrollToNews();
+    }, 200);
   };
   const handleChange = (event) => {
     setInputValue((prev) => (prev = event));
@@ -109,9 +111,15 @@ function App() {
   const mobileButtonClick = (event) => {
     const country = event.trim();
     setClickedCountry(country);
-    setData(localData.articles);
+
     setInputValue("");
     //fetchApiData(country);
+
+    setData(localData.articles);
+
+    setTimeout(() => {
+      scrollToNews();
+    }, 200);
   };
 
   return (
