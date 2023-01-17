@@ -19,6 +19,7 @@ function App() {
   const [country, setCountry] = useState("Hover a country");
   const [clickedCountry, setClickedCountry] = useState(null);
   const myElement = useRef(null);
+  const [inputValue, setInputValue] = useState("");
 
   function mouseOver(event) {
     setCountry(getLocationName(event));
@@ -102,11 +103,14 @@ function App() {
     setData(localData.articles);
     scrollToNews();
   };
+  const handleChange = (event) => {
+    setInputValue((prev) => (prev = event));
+  };
   const mobileButtonClick = (event) => {
     const country = event.trim();
-    console.log(country);
     setClickedCountry(country);
     setData(localData.articles);
+    setInputValue("");
     //fetchApiData(country);
   };
 
@@ -125,8 +129,11 @@ function App() {
                     onSelect={mobileButtonClick}
                     options={Countries}
                     trigger={""}
+                    value={inputValue}
+                    onChange={handleChange}
                     Component={"input"}
                     passThroughEnter={true}
+                    // onChange={handleChange}
                   />
                 </div>
                 <div className="not-mobile">
