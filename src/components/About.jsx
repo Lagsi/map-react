@@ -5,7 +5,7 @@ import styles from "./About.module.css";
 
 function About() {
   return (
-    <>
+    <div className="about-page-container">
       <p className="words">
         In this application, Our main objective is to provide uncensored and
         unbiased news coverage from countries around the world. This means that
@@ -41,7 +41,13 @@ function About() {
       <Link className={styles["button-wrapper"]} to="/">
         <button className={styles["go-back"]}>Go back</button>
       </Link>
-    </>
+
+      <div className="made-with-love">
+        <a href="https://github.com/Lagsi/map-react">Github repo</a>
+        <p>Made with ❤</p>
+        <p>And the power of friendship</p>
+      </div>
+    </div>
   );
 }
 

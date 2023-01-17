@@ -1,15 +1,19 @@
 #root {
   width: 100%;
   height: 100vh;
+  line-height: 24px;
 }
 
-html,
-body {
+html {
   width: 100%;
+  height: 100%;
 }
 
 body {
+  min-height: 100%;
   overflow-x: hidden;
+  position: relative;
+  margin: 0;
 }
 
 .not-mobile {
@@ -23,13 +27,23 @@ body {
   flex: 1;
   display: inline;
 }
+.about-page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: fit-content;
+}
+
+.made-with-love {
+  text-align: center;
+  margin-top: 5rem;
+}
 
 .header {
   padding: 0;
   display: flex;
   align-items: center;
-  padding: 0 0.5rem;
-  margin: 1rem 0 5rem 0;
+  padding: 1rem 1rem;
+  margin: 0rem 0 5rem 0;
   border-bottom: 3px solid #151515;
 }
 
@@ -102,6 +116,7 @@ body {
   width: 100%;
   font-size: 5rem;
   display: block;
+  margin: 0 auto;
 }
 
 .hover-display {
@@ -276,13 +291,19 @@ body {
     min-height: 22rem;
   }
 
+  .hover-display {
+    display: none;
+  }
+
   .mobile {
     display: block;
+    text-align: center;
   }
 
   .words {
     max-width: 80%;
   }
+
   .about-card-container {
     flex-direction: column;
     align-items: center;
@@ -292,6 +313,10 @@ body {
     opacity: 1;
     transition: all 0.5s;
     margin: 0.5rem 0;
+  }
+
+  .hover-country {
+    font-size: 3rem;
   }
 }
 

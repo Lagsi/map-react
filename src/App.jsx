@@ -98,14 +98,16 @@ function App() {
   const onClick = (event) => {
     const country = getLocationName(event);
     setClickedCountry(country);
-    fetchApiData(country);
+    //fetchApiData(country);
+    setData(localData.articles);
+    scrollToNews();
   };
   const mobileButtonClick = (event) => {
     const country = event.trim();
     console.log(country);
     setClickedCountry(country);
     setData(localData.articles);
-    fetchApiData(country);
+    //fetchApiData(country);
   };
 
   return (
@@ -118,6 +120,7 @@ function App() {
             element={
               <>
                 <div className="mobile">
+                  <p>Type the name of the country you wish to see news from</p>
                   <TextInput
                     onSelect={mobileButtonClick}
                     options={Countries}

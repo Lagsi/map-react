@@ -41,6 +41,12 @@
 
 .button-wrapper {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: left;
+}
+
+.app-title {
+  color: #e1e1e1;
+}
+.app-title:hover {
+  color: #fff;
 }

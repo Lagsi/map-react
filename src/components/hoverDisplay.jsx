@@ -1,7 +1,7 @@
 function HoverDisplay({ country }) {
   return (
     <div className="hover-display">
-      <span className="hover-country">{country}</span>
+      <h2 className="hover-country">{country}</h2>
     </div>
   );
 }

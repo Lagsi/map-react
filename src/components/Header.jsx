@@ -1,15 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styles from "./Header.module.css";
 
 function Header() {
   return (
     <header>
       <div className="header">
         <div className="about">
-          <Link to="/about">Who we are</Link>
+          <Link className={styles["button-wrapper"]} to="/about">
+            <button className={styles["go-back"]}>Who we are</button>
+          </Link>
         </div>
-
-        <h1>React Map</h1>
+        <Link to="/">
+          <h1 className={styles["app-title"]}>React Map</h1>
+        </Link>
       </div>
     </header>
   );
