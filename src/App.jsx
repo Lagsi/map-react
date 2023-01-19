@@ -1,7 +1,11 @@
 import { useRef, useState } from "react";
 import { SVGMap, Map } from "react-svg-map";
 import { getLocationName } from "./utils";
-import World from "@svg-maps/world";
+import W from "@svg-maps/world";
+const World = W.default ? W.default : W;
+
+// import S from "react-switch";
+// const Switch = S.default? S.default: S
 import Articles from "./components/Articles";
 import "react-svg-map/lib/index.css";
 import "./App.css";
@@ -11,7 +15,8 @@ import About from "./components/About";
 import Header from "./components/Header";
 import localData from "../data.json";
 import { Countries } from "../countries.js";
-import TextInput from "react-autocomplete-input";
+import TInput from "react-autocomplete-input";
+const TextInput = TInput.default ? TInput.default : TInput;
 import "react-autocomplete-input/dist/bundle.css";
 
 function App() {
@@ -28,7 +33,6 @@ function App() {
 
   const fetchApiData = (country) => {
     setLoading(true);
-    console.log(loading);
     try {
       fetch(
         `https://api.newscatcherapi.com/v2/search?q=${country}&lang=en,fa&search_in=title&sort_by=date&sources=ap.org,reuters.com,cnn.com,bbc.com,iranintl.com,bbc.co.uk,nytimes.com,theguardian.com,
