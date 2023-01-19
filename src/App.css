@@ -57,6 +57,11 @@ body {
   content: "";
 }
 
+.loading {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
 .words {
   text-align: center;
   padding: 0 0.5rem;

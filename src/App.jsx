@@ -20,12 +20,15 @@ function App() {
   const [clickedCountry, setClickedCountry] = useState(null);
   const myElement = useRef(null);
   const [inputValue, setInputValue] = useState("");
+  const [loading, setLoading] = useState(false);
 
   function mouseOver(event) {
     setCountry(getLocationName(event));
   }
 
   const fetchApiData = (country) => {
+    setLoading(true);
+    console.log(loading);
     try {
       fetch(
         `https://api.newscatcherapi.com/v2/search?q=${country}&lang=en,fa&search_in=title&sort_by=date&sources=ap.org,reuters.com,cnn.com,bbc.com,iranintl.com,bbc.co.uk,nytimes.com,theguardian.com,
@@ -67,6 +70,7 @@ function App() {
                     //   }
                     // });
                     setData(filteredArr);
+                    setLoading(false);
                     scrollToNews();
                   });
               } catch (error) {
@@ -81,12 +85,12 @@ function App() {
             }
           });
           if (data.articles.length > 4) setData(data.articles);
+          setLoading(false);
           scrollToNews();
         });
     } catch (error) {
       console.log(error);
     }
-    scrollToNews();
   };
 
   const scrollToNews = () => {
@@ -99,11 +103,8 @@ function App() {
   const onClick = (event) => {
     const country = getLocationName(event);
     setClickedCountry(country);
-    //fetchApiData(country);
-    setData(localData.articles);
-    setTimeout(() => {
-      scrollToNews();
-    }, 200);
+    fetchApiData(country);
+    // setData(localData.articles);
   };
   const handleChange = (event) => {
     setInputValue((prev) => (prev = event));
@@ -111,15 +112,9 @@ function App() {
   const mobileButtonClick = (event) => {
     const country = event.trim();
     setClickedCountry(country);
-
     setInputValue("");
-    //fetchApiData(country);
-
-    setData(localData.articles);
-
-    setTimeout(() => {
-      scrollToNews();
-    }, 200);
+    fetchApiData(country);
+    //setData(localData.articles);
   };
 
   return (
@@ -132,6 +127,9 @@ function App() {
             element={
               <>
                 <div className="mobile">
+                  <div className="loading">
+                    {loading && <h3>LOADING...</h3>}
+                  </div>
                   <p>Type the name of the country you wish to see news from</p>
                   <TextInput
                     onSelect={mobileButtonClick}
@@ -145,6 +143,9 @@ function App() {
                   />
                 </div>
                 <div className="not-mobile">
+                  <div className="loading">
+                    {loading && <h3>LOADING...</h3>}
+                  </div>
                   <HoverDisplay country={country} />
                   <div ref={myElement} className="map-container">
                     <SVGMap
