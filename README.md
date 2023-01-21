@@ -60,10 +60,10 @@ Contributions are welcome!
 
     4. Add changes to reflect the changes made 
 
-    5. Commit your changes `git commit -am 'Improve feature'`
+    5. Commit your changes `git commit -am "Improve feature"`
 
     6. Push to the branch `git push origin improve-feature`
-    
+
     7. Create a Pull Request
 
 ## License
