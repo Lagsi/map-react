@@ -15,8 +15,8 @@ export default function Modal({ summary, link, title }) {
 
     return (
         <>
-            <button onClick={toggleModal} className="btn-modal">
-                Open
+            <button onClick={toggleModal} className="css-button-sliding-to-top--green" >
+                Read Excerpt
             </button>
 
             {modal && (
@@ -24,15 +24,13 @@ export default function Modal({ summary, link, title }) {
                     <div onClick={toggleModal} className="overlay"></div>
                     <div className="modal-content">
                         <h2>{title}</h2>
-                        <p>
+                        <p className="summary">
                             {summary}
                         </p>
-                        <button className="close-modal" onClick={toggleModal}>
-                            CLOSE
-                        </button>
-                        <span>
-                            <a target={"_blank"} href={link}> Read More </a>
-                        </span>
+                            <span><a target={"_blank"} href={link}> <button className="css-button-arrow--black"> Read More </button>  </a></span>
+                
+                        <span className="close-modal" onClick={toggleModal}>&#10006;</span>
+
                     </div>
 
                 </div>
