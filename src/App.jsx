@@ -3,6 +3,7 @@ import { SVGMap, Map } from "react-svg-map";
 import { getLocationName } from "./utils";
 import W from "@svg-maps/world";
 const World = W.default ? W.default : W;
+import Modal from "./components/Modal";
 
 // import S from "react-switch";
 // const Switch = S.default? S.default: S
@@ -107,8 +108,8 @@ function App() {
   const onClick = (event) => {
     const country = getLocationName(event);
     setClickedCountry(country);
-    fetchApiData(country);
-    // setData(localData.articles);
+    // fetchApiData(country);
+    setData(localData.articles);
   };
   const handleChange = (event) => {
     setInputValue((prev) => (prev = event));
@@ -143,7 +144,7 @@ function App() {
                     onChange={handleChange}
                     Component={"input"}
                     passThroughEnter={true}
-                    // onChange={handleChange}
+                  // onChange={handleChange}
                   />
                 </div>
                 <div className="not-mobile">

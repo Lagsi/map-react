@@ -1,6 +1,8 @@
 import React from "react";
+import Modal from './Modal';
 
-function Article({ article }) {
+
+function Article({ article, summary }) {
   const date = new Date(article.published_date).toDateString();
 
   return (
@@ -32,6 +34,7 @@ function Article({ article }) {
               </a>
             </span>
           )}
+          
           {!article.authors && !article.author && (
             <span>
               <a target={"_blank"} href={"https://" + article.clean_url}>
@@ -41,7 +44,9 @@ function Article({ article }) {
           )}
 
           <span>{date}</span>
+
         </div>
+        <Modal link={article.link} title={article.title} summary={summary}/>
     </div>
   );
 }
