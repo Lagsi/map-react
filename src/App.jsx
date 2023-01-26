@@ -108,8 +108,8 @@ function App() {
   const onClick = (event) => {
     const country = getLocationName(event);
     setClickedCountry(country);
-    // fetchApiData(country);
-    setData(localData.articles);
+    fetchApiData(country);
+    // setData(localData.articles);
   };
   const handleChange = (event) => {
     setInputValue((prev) => (prev = event));

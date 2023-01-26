@@ -1,5 +1,5 @@
 .go-back {
-  font-size: 18px;
+  font-size: 0.8em;
   color: #e1e1e1;
   font-family: inherit;
   font-weight: 800;
@@ -46,7 +46,26 @@
 
 .app-title {
   color: #e1e1e1;
+  font-size: 1.3em;
 }
+
 .app-title:hover {
   color: #fff;
 }
+
+
+.header {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  margin: 0rem 0 5rem 0;
+  border-bottom: 1px solid #151515;
+}
+
+.header h1 {
+  text-align: center;
+  display: inherit;
+}
+

@@ -5,15 +5,14 @@ import Article from './Article'
 function Articles({ data }) {
     return (
         <div className="articles">
-            {data.map((article, index) => {
+            {data.map((article) => {
                 return (
-                    <>
-                        <Article article={article} key={index} summary={article.summary}/>
-                        
-                    </>
+                    <React.Fragment key={article._id}>
+                        < Article article={article} summary={article.summary} />
+                    </React.Fragment>
                 );
             })}
-        </div>
+        </div >
     )
 }
 
