@@ -15,6 +15,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import About from "./components/About";
 import Header from "./components/Header";
 import localData from "../data.json";
+import Saved from "./components/saved";
 import { Countries } from "../countries.js";
 import TInput from "react-autocomplete-input";
 const TextInput = TInput.default ? TInput.default : TInput;
@@ -108,8 +109,8 @@ function App() {
   const onClick = (event) => {
     const country = getLocationName(event);
     setClickedCountry(country);
-    fetchApiData(country);
-    // setData(localData.articles);
+    // fetchApiData(country);
+    setData(localData.articles);
   };
   const handleChange = (event) => {
     setInputValue((prev) => (prev = event));
@@ -121,7 +122,7 @@ function App() {
     fetchApiData(country);
     //setData(localData.articles);
   };
-
+  console.log(data)
   return (
     <>
       <BrowserRouter>
@@ -167,6 +168,7 @@ function App() {
               </>
             }
           />
+          <Route path="/saved" element={<Saved />} />
           <Route path="/about" element={<About />} />
         </Routes>
       </BrowserRouter>
