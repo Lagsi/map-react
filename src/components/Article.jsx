@@ -8,7 +8,6 @@ function Article({ article, summary }) {
 
   return (
     <div className="card">
-
       <a href={article.link} target={"_blank"}>
         <div className="card-image">
           {article.media && <img src={article.media} alt="" />}

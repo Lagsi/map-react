@@ -422,12 +422,15 @@ body {
   border: 2px solid #215740;
   color: #57cc99;
 }
+
 .css-button-sliding-to-top--green:hover {
   color: #fff;
 }
+
 .css-button-sliding-to-top--green:hover:after {
   height: 100%;
 }
+
 .css-button-sliding-to-top--green:after {
   content: "";
   position: absolute;
@@ -440,6 +443,15 @@ body {
   background: #57cc99;
 }
 
+p.warning {
+  background-color: #000000;
+  border: 1px solid #ff0000;
+  color: #ff0000;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+}
 
 @media (max-width: 1500px) {
   .articles {
