@@ -30,7 +30,7 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   function mouseOver(event) {
-    setCountry(getLocationName(event));
+    setInputValue(getLocationName(event));
   }
 
   const fetchApiData = (country) => {
@@ -106,6 +106,9 @@ function App() {
     });
   };
 
+  const mouseOut = () => {
+    setInputValue("");
+  };
   const onClick = (event) => {
     const country = getLocationName(event);
     setClickedCountry(country);
@@ -122,7 +125,6 @@ function App() {
     fetchApiData(country);
     //setData(localData.articles);
   };
-  console.log(data)
   return (
     <>
       <BrowserRouter>
@@ -136,8 +138,12 @@ function App() {
                   <div className="loading">
                     {loading && <h3>LOADING...</h3>}
                   </div>
-                  <p>Type the name of the country you wish to see news from</p>
+                  <p>
+                    Type the name of the country you wish to see news from or
+                    click the map below
+                  </p>
                   <TextInput
+                    className="map-input"
                     onSelect={mobileButtonClick}
                     options={Countries}
                     trigger={""}
@@ -145,17 +151,17 @@ function App() {
                     onChange={handleChange}
                     Component={"input"}
                     passThroughEnter={true}
-                  // onChange={handleChange}
                   />
                 </div>
                 <div className="not-mobile">
                   <div className="loading">
                     {loading && <h3>LOADING...</h3>}
                   </div>
-                  <HoverDisplay country={country} />
+                  {/* <HoverDisplay country={country} /> */}
                   <div ref={myElement} className="map-container">
                     <SVGMap
                       map={World}
+                      onLocationMouseOut={mouseOut}
                       onLocationClick={onClick}
                       onLocationMouseOver={mouseOver}
                     />
