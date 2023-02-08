@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import AboutCard from "./AboutCard";
 import styles from "./About.module.css";
+import Footer from "./Footer";
 
 function About() {
   return (
@@ -38,15 +39,12 @@ function About() {
           linkedin="https://www.linkedin.com/in/jeppehauman/"
         />
       </div>
-      <Link className={styles["button-wrapper"]} to="/">
-        <button className={styles["go-back"]}>Go back</button>
-      </Link>
-
-      <div className="made-with-love">
-        <a href="https://github.com/Lagsi/map-react">Github repo</a>
-        <p>Made with ❤</p>
-        <p>And the power of friendship</p>
+      <div className={styles["button-wrapper"]}>
+        <Link className={styles["go-back"]} to="/">
+          Go back
+        </Link>
       </div>
+      <Footer />
     </div>
   );
 }

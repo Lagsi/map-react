@@ -7,18 +7,18 @@ function Header() {
     <header>
       <div className={styles.header}>
         <div className={styles.about}>
-          <Link className={styles["button-wrapper"]} to="/about">
-            <button className={styles["go-back"]}>Who we are</button>
+          <Link className={styles["go-back"]} to="/about">
+            Who we are
           </Link>
         </div>
-        <div>
+        <div className={styles["app-title-container"]}>
           <Link to="/">
             <h1 className={styles["app-title"]}>News Map</h1>
           </Link>
         </div>
         <div>
-          <Link className={styles["button-wrapper"]} to="/saved">
-            <button className={styles["go-back"]}>Saved News</button>
+          <Link className={styles["go-back"]} to="/saved">
+            Saved news
           </Link>
         </div>
       </div>

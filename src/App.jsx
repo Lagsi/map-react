@@ -148,12 +148,22 @@ function App() {
                     onChange={handleChange}
                     Component={"input"}
                     passThroughEnter={true}
+                    onKeyDown={(e) => {
+                      if (e.keyCode === 13) {
+                        const newInputValue =
+                          inputValue[0].toUpperCase() + inputValue.slice(1);
+                        mobileButtonClick(newInputValue);
+                      }
+                    }}
                   />
                 </div>
                 <div className="not-mobile">
-                  <div className="loading">
-                    {loading && <h3>LOADING...</h3>}
-                  </div>
+                  {loading && (
+                    <div className="loading">
+                      <h3>LOADING...</h3>
+                    </div>
+                  )}
+
                   {/* <HoverDisplay country={country} /> */}
                   <div ref={myElement} className="map-container">
                     <SVGMap
