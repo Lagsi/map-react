@@ -13,14 +13,13 @@ function Header() {
         </div>
         <div>
           <Link to="/">
-            <h1 className={styles["app-title"]}>React Map</h1>
+            <h1 className={styles["app-title"]}>News Map</h1>
           </Link>
         </div>
         <div>
           <Link className={styles["button-wrapper"]} to="/saved">
             <button className={styles["go-back"]}>Saved News</button>
           </Link>
-
         </div>
       </div>
     </header>
