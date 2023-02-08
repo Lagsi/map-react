@@ -1,17 +1,16 @@
-# React Map
+# News Map
 
-An interactive map of the world. Click on any country and get the latest news from that specific country. 
+An interactive map of the world. Click on any country and get the latest news from that specific country.
 
-The app is developed by Vite-React and deployed on Netlify. 
+The app is developed by Vite-React and deployed on Netlify.
 
 ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7)
 
-
 ## DEMO
 
-https://reactnews-map.netlify.app/
+https://newsmap.netlify.app/
 
 ## Motivation
 
@@ -19,8 +18,8 @@ In this application, our main objective is to provide uncensored and unbiased ne
 
 # Team
 
-- [Nima](https://github.com/n13a)  
-- [Ayla](https://github.com/aylacura)  
+- [Nima](https://github.com/n13a)
+- [Ayla](https://github.com/aylacura)
 - [Jeppe](https://github.com/JeppeHauman)
 
 # Getting Started
@@ -31,16 +30,16 @@ In this application, our main objective is to provide uncensored and unbiased ne
     git clone https://github.com/Lagsi/map-react.git
     cd map-react
 ```
+
 2. Run the command `npm install` in the project directory to install the project's dependencies.
 
 3. Run the command `npm run dev` to start the development server.
 
 4. Open the app on your local server on http://localhost:5173/
 
-
 ## API
 
-Project uses  Newscatcher API. [Get API key](https://newscatcherapi.com/).
+Project uses Newscatcher API. [Get API key](https://newscatcherapi.com/).
 
 ## Environment Variables
 
@@ -58,7 +57,7 @@ Contributions are welcome!
 
 3. Make the appropriate changes in the files
 
-4. Add changes to reflect the changes made 
+4. Add changes to reflect the changes made
 
 5. Commit your changes `git commit -am "Improve feature"`
 
@@ -66,6 +65,6 @@ Contributions are welcome!
 
 7. Create a Pull Request
 
-## License  
+## License
 
 [MIT](https://choosealicense.com/licenses/mit/) &copy; Lagsi
