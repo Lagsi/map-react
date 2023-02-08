@@ -25,7 +25,12 @@ body {
 }
 
 .mobile {
-  display: block;
+  display: none;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.input-container {
   text-align: center;
   font-size: 1.5rem;
 }

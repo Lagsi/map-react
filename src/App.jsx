@@ -134,10 +134,7 @@ function App() {
             path="/"
             element={
               <>
-                <div className="mobile">
-                  <div className="loading">
-                    {loading && <h3>LOADING...</h3>}
-                  </div>
+                <div className="input-container">
                   <p>
                     Type the name of the country you wish to see news from or
                     click the map below
