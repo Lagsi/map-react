@@ -4,7 +4,7 @@ import Star from './Star'
 
 
 function Article({ article, summary }) {
-  const date = new Date(article.published_date).toDateString();
+  const date = new Date(article.published_date.replace(/-/g, "/")).toDateString()
 
   return (
     <div className="card">
