@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
-import { SVGMap, Map } from "react-svg-map";
-import { getLocationName } from "./utils";
+import { SVGMap, Map, RadioSVGMap } from "react-svg-map";
+import { getLocationName, getLocationSelected } from "./utils";
 import W from "@svg-maps/world";
 const World = W.default ? W.default : W;
 import Modal from "./components/Modal";
@@ -110,9 +110,11 @@ function App() {
     setInputValue("");
   };
   const onClick = (event) => {
+    console.log(event);
     const country = getLocationName(event);
     setClickedCountry(country);
     fetchApiData(country);
+    console.log(getLocationSelected(event));
     // setData(localData.articles);
   };
   const handleChange = (event) => {
@@ -169,8 +171,11 @@ function App() {
                     <SVGMap
                       map={World}
                       onLocationMouseOut={mouseOut}
-                      onLocationClick={onClick}
+                      // onLocationClick={onClick}
                       onLocationMouseOver={mouseOver}
+                      isLocationSelected={(location, index) => {
+                        console.log(index);
+                      }}
                     />
                   </div>
                   <h2 className="clicked-country">{clickedCountry}</h2>
