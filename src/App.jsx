@@ -28,77 +28,127 @@ function App() {
   const myElement = useRef(null);
   const [inputValue, setInputValue] = useState("");
   const [loading, setLoading] = useState(false);
+  const [underFive, setUnderFive] = useState(false);
 
   function mouseOver(event) {
     setInputValue(getLocationName(event));
   }
 
-  const fetchApiData = (country) => {
+  const fetchApiData = async (country) => {
+    setUnderFive(false);
     setLoading(true);
     try {
-      fetch(
-        `https://api.newscatcherapi.com/v2/search?q=${country}&lang=en,fa&search_in=title&sort_by=date&sources=ap.org,reuters.com,cnn.com,bbc.com,iranintl.com,bbc.co.uk,nytimes.com,theguardian.com,
-        `,
+      const response = await fetch(
+        `https://api.newscatcherapi.com/v2/search?q=${country}&lang=en,fa&search_in=title&sort_by=date&to_rank=1000&not_sources=cts.businesswire.com,intelligenceonline.com,coinupdate.com,reddit.com
+      `,
         {
           headers: {
             "x-api-key": import.meta.env.VITE_NEWSCATCHER_KEY,
           },
         }
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          if (!data.articles || data.articles.length < 5) {
-            setTimeout(() => {
-              try {
-                fetch(
-                  `https://api.newscatcherapi.com/v2/search?q=${country}&lang=en,fa&search_in=title&sort_by=date&not_sources=cts.businesswire.com,intelligenceonline.com
-                `,
-                  {
-                    headers: {
-                      "x-api-key": import.meta.env.VITE_NEWSCATCHER_KEY,
-                    },
-                  }
-                )
-                  .then((response) => response.json())
-                  .then((dataWithoutAllSrcs) => {
-                    let arr = dataWithoutAllSrcs.articles;
-                    const uniqueTitles = new Set();
-                    const filteredArr = arr.filter((obj) => {
-                      if (!uniqueTitles.has(obj.title)) {
-                        uniqueTitles.add(obj.title);
-                        return true;
-                      }
-                      return false;
-                    });
-                    // filteredArr.articles.forEach((article) => {
-                    //   if (article.title.length > 200) {
-                    //     article.title = article.title.slice(0, 200);
-                    //   }
-                    // });
-                    setData(filteredArr);
-                    setLoading(false);
-                    scrollToNews();
-                  });
-              } catch (error) {
-                console.log(error);
-              }
-            }, 1200);
-            return;
-          }
-          data.articles.forEach((article) => {
-            if (article.title.length > 200) {
-              article.title = article.title.slice(0, 200);
-            }
+      );
+      const articles = await response.json();
+      let filteredArticles = [];
+      let rank = 100;
+      if (articles.articles) {
+        while (filteredArticles.length < 5 && rank < 1000) {
+          filteredArticles = articles.articles.filter((article) => {
+            return article.rank <= rank;
           });
-          if (data.articles.length > 4) setData(data.articles);
-          setLoading(false);
-          scrollToNews();
-        });
+          rank += 100;
+        }
+      }
+
+      // Filtering articles with same title
+      const uniqueTitles = new Set();
+      filteredArticles = filteredArticles.filter((obj) => {
+        if (!uniqueTitles.has(obj.title)) {
+          uniqueTitles.add(obj.title);
+          return true;
+        }
+        return false;
+      });
+
+      if (!articles.articles || filteredArticles.length < 5) {
+        setLoading(false);
+        setUnderFive(true);
+        setData([]);
+        return;
+      }
+
+      setData(filteredArticles);
+      setLoading(false);
+      scrollToNews();
     } catch (error) {
       console.log(error);
     }
-  };
 
+    //   try {
+    //     fetch(
+    //       `https://api.newscatcherapi.com/v2/search?q=${country}&lang=en,fa&search_in=title&sort_by=date&sort_by=rank&sources=ap.org,reuters.com,cnn.com,bbc.com,iranintl.com,bbc.co.uk,nytimes.com,theguardian.com,
+    //       `,
+    //       {
+    //         headers: {
+    //           "x-api-key": import.meta.env.VITE_NEWSCATCHER_KEY,
+    //         },
+    //       }
+    //     )
+    //       .then((response) => response.json())
+    //       .then((data) => {
+    //         console.log(data.articles);
+    //         if (!data.articles || data.articles.length < 5) {
+    //           setTimeout(() => {
+    //             try {
+    //               fetch(
+    //                 `https://api.newscatcherapi.com/v2/search?q=${country}&lang=en,fa&search_in=title&sort_by=date&to_rank=2000&not_sources=cts.businesswire.com,intelligenceonline.com,coinupdate.com,
+    //               `,
+    //                 {
+    //                   headers: {
+    //                     "x-api-key": import.meta.env.VITE_NEWSCATCHER_KEY,
+    //                   },
+    //                 }
+    //               )
+    //                 .then((response) => response.json())
+    //                 .then((dataWithoutAllSrcs) => {
+    //                   let arr = dataWithoutAllSrcs.articles;
+    //                   const uniqueTitles = new Set();
+    //                   const filteredArr = arr.filter((obj) => {
+    //                     if (!uniqueTitles.has(obj.title)) {
+    //                       uniqueTitles.add(obj.title);
+    //                       return true;
+    //                     }
+    //                     return false;
+    //                   });
+    //                   // filteredArr.articles.forEach((article) => {
+    //                   //   if (article.title.length > 200) {
+    //                   //     article.title = article.title.slice(0, 200);
+    //                   //   }
+    //                   // });
+    //                   setData(filteredArr);
+    //                   setLoading(false);
+    //                   scrollToNews();
+    //                   console.log(filteredArr);
+    //                 });
+    //             } catch (error) {
+    //               console.log(error);
+    //             }
+    //           }, 1200);
+    //           return;
+    //         }
+    //         data.articles.forEach((article) => {
+    //           if (article.title.length > 200) {
+    //             article.title = article.title.slice(0, 200);
+    //           }
+    //         });
+    //         if (data.articles.length > 4) setData(data.articles);
+    //         setLoading(false);
+    //         scrollToNews();
+    //       });
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // };
+  };
   const scrollToNews = () => {
     window.scrollTo({
       top: 800,
@@ -110,11 +160,10 @@ function App() {
     setInputValue("");
   };
   const onClick = (event) => {
-    console.log(event);
     const country = getLocationName(event);
     setClickedCountry(country);
     fetchApiData(country);
-    console.log(getLocationSelected(event));
+    // console.log(getLocationSelected(event));
     // setData(localData.articles);
   };
   const handleChange = (event) => {
@@ -160,6 +209,11 @@ function App() {
                   />
                 </div>
                 <div className="not-mobile">
+                  {underFive && (
+                    <div className="loading">
+                      <h3>Beware: very few articles from {clickedCountry}</h3>
+                    </div>
+                  )}
                   {loading && (
                     <div className="loading">
                       <h3>LOADING...</h3>
@@ -171,11 +225,11 @@ function App() {
                     <SVGMap
                       map={World}
                       onLocationMouseOut={mouseOut}
-                      // onLocationClick={onClick}
+                      onLocationClick={onClick}
                       onLocationMouseOver={mouseOver}
-                      isLocationSelected={(location, index) => {
-                        console.log(index);
-                      }}
+                      // isLocationSelected={(location, index) => {
+                      //   console.log(index);
+                      // }}
                     />
                   </div>
                   <h2 className="clicked-country">{clickedCountry}</h2>
