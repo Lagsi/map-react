@@ -452,6 +452,27 @@ body {
   background: #57cc99;
 }
 
+.input {
+  max-width: 190px;
+  background-color: #303030;
+  color: #ffffff;
+  padding: .15rem .5rem;
+  min-height: 40px;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  line-height: 1.15;
+}
+
+input:focus {
+  border-bottom: 2px solid #A1D99B;
+  border-radius: 4px 4px 2px 2px;
+}
+
+input:hover {
+  outline: 1px solid lightgrey;
+}
+
 p.warning {
   background-color: #000000;
   border: 1px solid #ff0000;

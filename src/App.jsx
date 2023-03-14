@@ -191,7 +191,8 @@ function App() {
                     click the map below
                   </p>
                   <TextInput
-                    className="map-input"
+                    placeholder="Type a Country"
+                    className="input"
                     onSelect={mobileButtonClick}
                     options={Countries}
                     trigger={""}
@@ -227,9 +228,9 @@ function App() {
                       onLocationMouseOut={mouseOut}
                       onLocationClick={onClick}
                       onLocationMouseOver={mouseOver}
-                      // isLocationSelected={(location, index) => {
-                      //   console.log(index);
-                      // }}
+                    // isLocationSelected={(location, index) => {
+                    //   console.log(index);
+                    // }}
                     />
                   </div>
                   <h2 className="clicked-country">{clickedCountry}</h2>
