@@ -65,6 +65,9 @@ Contributions are welcome!
 
 7. Create a Pull Request
 
+## TODO
+Display news articles related to multiple selected countries.
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/) &copy; Lagsi
