@@ -1,25 +1,32 @@
 import React from "react";
-import Modal from './Modal';
-import Star from './Star'
+import Modal from "./Modal";
+import Star from "./Star";
 
-
-function Article({ article, summary }) {
-  const date = new Date(article.published_date.replace(/-/g, "/")).toDateString()
+function Article({ article }) {
+  const date = new Date(article.publishedAt).toDateString();
 
   return (
     <div className="card">
-      <a href={article.link} target={"_blank"}>
+      <a href={article.url} target={"_blank"}>
         <div className="card-image">
-          {article.media && <img src={article.media} alt="" />}
+          {
+            <img
+              src={
+                article.urlToImage
+                  ? article.urlToImage
+                  : "/news-default-image.png"
+              }
+              alt=""
+            />
+          }
         </div>
       </a>
       <div className="category">
-        {article.topic}
         <Star article={article} />
       </div>
       <div className="heading">
         {" "}
-        <a target={"_blank"} href={article.link}>
+        <a target={"_blank"} href={article.url}>
           {article.title}
         </a>
       </div>
@@ -48,9 +55,16 @@ function Article({ article, summary }) {
         )}
 
         <span>{date}</span>
-
       </div>
-      <Modal link={article.link} title={article.title} summary={summary} />
+      <Modal
+        link={article.url}
+        title={article.title}
+        summary={
+          article.content.split("[")[0].startsWith("We use")
+            ? article.description
+            : article.content.split("[")[0]
+        }
+      />
     </div>
   );
 }
