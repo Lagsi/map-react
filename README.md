@@ -39,7 +39,7 @@ In this application, our main objective is to provide uncensored and unbiased ne
 
 ## API
 
-Project uses Newscatcher API. [Get API key](https://newscatcherapi.com/).
+Project uses newsApi. [Get API key](https://newsapi.org/).
 
 ## Environment Variables
 
