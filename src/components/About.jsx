@@ -16,6 +16,11 @@ function About() {
         television news broadcasting policies.
       </p>
 
+      <p className="words">
+        We are using <a href="https://newsapi.org/">NewsAPI</a> as our resource
+        for news.{" "}
+      </p>
+
       <div className="about-card-container">
         <AboutCard
           name="Nima"
