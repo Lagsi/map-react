@@ -4,7 +4,7 @@ const Star = ({ article }) => {
     const [save, setSave] = useState(false);
 
     useEffect(() => {
-        const savedArticle = localStorage.getItem(article._id);
+        const savedArticle = localStorage.getItem(article.id);
         if (savedArticle) {
             setSave(true);
         }
@@ -12,9 +12,9 @@ const Star = ({ article }) => {
 
     useEffect(() => {
         if (save) {
-            localStorage.setItem(article._id, JSON.stringify(article));
+            localStorage.setItem(article.id, JSON.stringify(article));
         } else {
-            localStorage.removeItem(article._id);
+            localStorage.removeItem(article.id);
         }
     }, [save]);
 

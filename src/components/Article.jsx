@@ -4,9 +4,8 @@ import Star from "./Star";
 
 function Article({ article }) {
   const date = new Date(article.webPublicationDate).toDateString();
-  console.log("🚀 ~ file: Article.jsx:6 ~ Article ~ article:", article)
   return (
-    <div className="card">
+    <div key={article.add} className="card">
       <a href={article.webUrl} target={"_blank"}>
         <div className="card-image">
           {

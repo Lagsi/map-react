@@ -5,6 +5,7 @@ function Articles({ data }) {
   return (
     <div className="articles">
       {data.map((article) => {
+        console.log(article.id)
         return (
           <React.Fragment key={article.id}>
             <Article article={article} />

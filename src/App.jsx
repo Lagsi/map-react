@@ -33,7 +33,7 @@ function App() {
   const fetchApiData = async (country) => {
     setLoading(true);
     const response = await fetch(
-      `https://content.guardianapis.com/search?show-tags=contributor&show-references=author&q=${country}&show-fields=all&api-key=${import.meta.env.VITE_GUARDIAN_API
+      `https://content.guardianapis.com/search?show-tags=contributor&show-references=author&q=${country}&page-size=20&show-fields=all&api-key=${import.meta.env.VITE_GUARDIAN_API
       }`
 
     );
