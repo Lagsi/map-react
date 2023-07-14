@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
-import { SVGMap, Map, RadioSVGMap } from "react-svg-map";
-import { getLocationName, getLocationSelected } from "./utils";
+import { SVGMap } from "react-svg-map";
+import { getLocationName } from "./utils";
 import W from "@svg-maps/world";
 const World = W.default ? W.default : W;
 
@@ -24,7 +24,6 @@ function App() {
   const myElement = useRef(null);
   const [inputValue, setInputValue] = useState("");
   const [loading, setLoading] = useState(false);
-  const [underFive, setUnderFive] = useState(false);
 
   function mouseOver(event) {
     setInputValue(getLocationName(event));
