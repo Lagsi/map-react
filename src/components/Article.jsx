@@ -3,17 +3,17 @@ import Modal from "./Modal";
 import Star from "./Star";
 
 function Article({ article }) {
-  const date = new Date(article.publishedAt).toDateString();
-
+  const date = new Date(article.webPublicationDate).toDateString();
+  console.log("🚀 ~ file: Article.jsx:6 ~ Article ~ article:", article)
   return (
     <div className="card">
-      <a href={article.url} target={"_blank"}>
+      <a href={article.webUrl} target={"_blank"}>
         <div className="card-image">
           {
             <img
               src={
-                article.urlToImage
-                  ? article.urlToImage
+                article.fields.thumbnail
+                  ? article.fields.thumbnail
                   : "/news-default-image.png"
               }
               alt=""
@@ -26,14 +26,15 @@ function Article({ article }) {
       </div>
       <div className="heading">
         {" "}
-        <a target={"_blank"} href={article.url}>
-          {article.title}
+        <a target={"_blank"} href={article.webUrl}>
+          {article.webTitle}
         </a>
       </div>
-      <div className="author">
-        {article.author && (
+      <div dangerouslySetInnerHTML={{ __html: article.fields.bylineHtml }} className="author">
+        { }
+        {/* {article.author && (
           <span>
-            <a href={`https://www.google.com/search?q=${article.author}`}>
+            <a href={`https://www.google.com/search?q=${article.fields.byline}`}>
               {article.author}
             </a>
           </span>
@@ -48,22 +49,18 @@ function Article({ article }) {
 
         {!article.authors && !article.author && (
           <span>
-            <a target={"_blank"} href={"https://" + article.clean_url}>
+            <a target={"_blank"} href={article.webUrl}>
               {article.clean_url}
             </a>
           </span>
         )}
 
-        <span>{date}</span>
+        <span>{date}</span> */}
       </div>
       <Modal
-        link={article.url}
-        title={article.title}
-        summary={
-          article.content.split("[")[0].startsWith("We use")
-            ? article.description
-            : article.content.split("[")[0]
-        }
+        link={article.webUrl}
+        title={article.webTitle}
+        summary={article.fields.body}
       />
     </div>
   );

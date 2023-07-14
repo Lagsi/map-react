@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
 import { SVGMap, Map, RadioSVGMap } from "react-svg-map";
 import { getLocationName, getLocationSelected } from "./utils";
-import articles from "../data.json";
 import W from "@svg-maps/world";
 const World = W.default ? W.default : W;
 
@@ -33,14 +32,13 @@ function App() {
 
   const fetchApiData = async (country) => {
     setLoading(true);
-    // const response = await fetch(
-    //   `https://newsapi.org/v2/everything?q=${country}&searchIn=title&language=en&sortBy=popularity&pageSize=20&excludeDomains=holidaypirates.com&apiKey=${
-    //     import.meta.env.VITE_NEWSAPI_KEY
-    //   }`
-    // );
-    // const articles = await response.json();
-    // console.log(articles.articles);
-    setData(articles.articles);
+    const response = await fetch(
+      `https://content.guardianapis.com/search?show-tags=contributor&show-references=author&q=${country}&show-fields=all&api-key=${import.meta.env.VITE_GUARDIAN_API
+      }`
+
+    );
+    const articles = await response.json();
+    setData(articles.response.results)
     setLoading(false);
     scrollToNews();
   };
@@ -173,10 +171,6 @@ function App() {
                     />
                   </div>
                   <h2 className="clicked-country">{clickedCountry}</h2>
-                  <p className="words">
-                    (Not actually getting news from the API at the moment. The
-                    news are stored locally and not related to the country.)
-                  </p>
                   <div className="articles-container">
                     <Articles data={data} />
                   </div>

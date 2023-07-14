@@ -6,7 +6,7 @@ function Articles({ data }) {
     <div className="articles">
       {data.map((article) => {
         return (
-          <React.Fragment key={article._id}>
+          <React.Fragment key={article.id}>
             <Article article={article} />
           </React.Fragment>
         );
