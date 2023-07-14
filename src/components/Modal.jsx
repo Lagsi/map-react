@@ -25,8 +25,6 @@ export default function Modal({ summary, link, title }) {
                     <div className="modal-content">
                         <h2>{title}</h2>
                         <div dangerouslySetInnerHTML={{ __html: summary }}></div>
-                        {/* <p dangerouslySetInnerHTML={} className="summary">
-                        </p> */}
 
                         <span className="close-modal" onClick={toggleModal}>&#10006;</span>
                         <span><a target={"_blank"} href={link}> <button className="css-button-arrow--black"> Read More </button>  </a></span>

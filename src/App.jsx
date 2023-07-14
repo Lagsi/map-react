@@ -43,56 +43,6 @@ function App() {
     scrollToNews();
   };
 
-  // const fetchApiData = async (country) => {
-  //   setUnderFive(false);
-  //   setLoading(true);
-  //   try {
-  //     const response = await fetch(
-  //       `https://api.newscatcherapi.com/v2/search?q=${country}&lang=en,fa&search_in=title&sort_by=date&to_rank=1000&not_sources=cts.businesswire.com,intelligenceonline.com,coinupdate.com,reddit.com
-  //     `,
-  //       {
-  //         headers: {
-  //           "x-api-key": import.meta.env.VITE_NEWSCATCHER_KEY,
-  //         },
-  //       }
-  //     );
-  //     const articles = await response.json();
-  //     let filteredArticles = [];
-  //     let rank = 100;
-  //     if (articles.articles) {
-  //       while (filteredArticles.length < 5 && rank < 1000) {
-  //         filteredArticles = articles.articles.filter((article) => {
-  //           return article.rank <= rank;
-  //         });
-  //         rank += 100;
-  //       }
-  //     }
-
-  //     // Filtering articles with same title
-  //     const uniqueTitles = new Set();
-  //     filteredArticles = filteredArticles.filter((obj) => {
-  //       if (!uniqueTitles.has(obj.title)) {
-  //         uniqueTitles.add(obj.title);
-  //         return true;
-  //       }
-  //       return false;
-  //     });
-
-  //     if (!articles.articles || filteredArticles.length < 5) {
-  //       setLoading(false);
-  //       setUnderFive(true);
-  //       setData([]);
-  //       return;
-  //     }
-
-  //     setData(filteredArticles);
-  //     setLoading(false);
-  //     scrollToNews();
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-
-  // };
   const scrollToNews = () => {
     window.scrollTo({
       top: 800,
@@ -151,11 +101,6 @@ function App() {
                   />
                 </div>
                 <div className="not-mobile">
-                  {underFive && (
-                    <div className="loading">
-                      <h3>Beware: very few articles from {clickedCountry}</h3>
-                    </div>
-                  )}
                   {loading && (
                     <div className="loading">
                       <h3>LOADING...</h3>

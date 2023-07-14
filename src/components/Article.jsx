@@ -23,6 +23,7 @@ function Article({ article }) {
       </a>
       <div className="category">
         <Star article={article} />
+        <span className="date">{date}</span>
       </div>
       <div className="heading">
         {" "}
@@ -31,31 +32,7 @@ function Article({ article }) {
         </a>
       </div>
       <div dangerouslySetInnerHTML={{ __html: article.fields.bylineHtml }} className="author">
-        { }
-        {/* {article.author && (
-          <span>
-            <a href={`https://www.google.com/search?q=${article.fields.byline}`}>
-              {article.author}
-            </a>
-          </span>
-        )}
-        {article.authors && !article.author && (
-          <span>
-            <a href={`https://www.google.com/search?q=${article.authors}`}>
-              {article.authors}
-            </a>
-          </span>
-        )}
 
-        {!article.authors && !article.author && (
-          <span>
-            <a target={"_blank"} href={article.webUrl}>
-              {article.clean_url}
-            </a>
-          </span>
-        )}
-
-        <span>{date}</span> */}
       </div>
       <Modal
         link={article.webUrl}

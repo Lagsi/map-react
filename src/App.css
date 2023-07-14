@@ -127,7 +127,7 @@ body {
   max-width: 100%;
   min-height: 24rem;
   background: rgb(30, 30, 30);
-  padding: 0.4em;
+  padding: 1rem;
   border-radius: 6px;
   cursor: pointer;
   position: relative;
@@ -152,13 +152,13 @@ body {
 }
 
 .category {
+  margin-block-start: 1rem;
   display: flex;
   justify-content: space-between;
   text-transform: uppercase;
   font-size: 0.7em;
   font-weight: 600;
   color: rgb(63, 121, 230);
-  padding: 10px 7px 0;
 }
 
 .category:hover {
@@ -170,7 +170,6 @@ body {
   flex-direction: column;
   font-weight: 600;
   color: white;
-  padding: 7px;
 }
 
 .heading a {
@@ -182,14 +181,13 @@ body {
 }
 
 .author {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  color: gray;
-  padding: 7px;
   margin-top: auto;
   font-weight: 400;
   font-size: 11px;
+}
+
+.date {
+  color: #215740
 }
 
 .author a {
@@ -312,7 +310,8 @@ body {
 }
 
 .modal-content {
-  padding: 2rem;
+  padding: 1rem 2rem;
+  margin: 1rem;
   position: relative;
   height: 700px;
   width: 70%;
@@ -324,7 +323,6 @@ body {
   box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(3.1px);
   -webkit-backdrop-filter: blur(3.1px);
-  border-radius: 10px;
 }
 
 .modal-content figure {
@@ -350,8 +348,8 @@ body {
 
 .close-modal {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 10px;
+  right: 10px;
   color: #fff;
   padding: 1px 6px;
   font-weight: bold;

@@ -8,16 +8,11 @@ function About() {
   return (
     <div className="about-page-container">
       <p className="words">
-        In this application, our main objective is to provide uncensored and
-        unbiased news coverage from countries around the world. This means that
-        all news topics, including human rights, gender equality, politics from
-        various parties, art and sports, should be made accessible to users
-        without selective filtering or editorial bias, as opposed to traditional
-        television news broadcasting policies.
+        Our React application combines the power of The Guardian's API with an interactive map of the world. Through this innovative integration, users can explore news articles and stories from The Guardian's extensive database, all displayed on an intuitive and visually appealing map interface. By simply navigating the map, users can discover articles related to specific regions or countries, gaining valuable insights and a global perspective on the latest news and events. With its seamless blend of real-time journalism and geographic visualization, our application offers a unique and engaging way to stay informed about the world.
       </p>
 
       <p className="words">
-        We are using <a href="https://newsapi.org/">NewsAPI</a> as our resource
+        We are using <a href="https://open-platform.theguardian.com/">The Guardian API</a> as our source
         for news.{" "}
       </p>
 
