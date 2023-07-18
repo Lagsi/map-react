@@ -20,6 +20,7 @@ import "react-autocomplete-input/dist/bundle.css";
 
 function App() {
   const [data, setData] = useState([]);
+  console.log(data.length);
   const [clickedCountry, setClickedCountry] = useState(null);
   const myElement = useRef(null);
   const [inputValue, setInputValue] = useState("");

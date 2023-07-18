@@ -3,12 +3,15 @@ import Modal from "./Modal";
 import Star from "./Star";
 
 function Article({ article }) {
-  console.log(article.fields.bylineHtml);
-  let authorUrl = article.fields.bylineHtml;
-  if (authorUrl.startsWith("<")) {
-    authorUrl = `<a href="https://theguardian.com/${
-      authorUrl.split('"')[1]
-    }"> ${article.fields.byline} <a/>`;
+  let authorUrl = "unknown author";
+  if (article.fields.bylineHtml) {
+    if (article.fields.bylineHtml.startsWith("<")) {
+      authorUrl = `<a href="https://theguardian.com/${
+        authorUrl.split('"')[1]
+      }"> ${article.fields.byline} <a/>`;
+    } else if (article.fields.bylineHtml.length > 0) {
+      authorUrl = article.fields.byline;
+    }
   }
   const date = new Date(article.webPublicationDate).toDateString();
   return (
