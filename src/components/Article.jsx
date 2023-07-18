@@ -3,6 +3,13 @@ import Modal from "./Modal";
 import Star from "./Star";
 
 function Article({ article }) {
+  console.log(article.fields.bylineHtml);
+  let authorUrl = article.fields.bylineHtml;
+  if (authorUrl.startsWith("<")) {
+    authorUrl = `<a href="https://theguardian.com/${
+      authorUrl.split('"')[1]
+    }"> ${article.fields.byline} <a/>`;
+  }
   const date = new Date(article.webPublicationDate).toDateString();
   return (
     <div key={article.add} className="card">
@@ -30,9 +37,10 @@ function Article({ article }) {
           {article.webTitle}
         </a>
       </div>
-      <div dangerouslySetInnerHTML={{ __html: article.fields.bylineHtml }} className="author">
-
-      </div>
+      <div
+        dangerouslySetInnerHTML={{ __html: authorUrl }}
+        className="author"
+      ></div>
       <Modal
         link={article.webUrl}
         title={article.webTitle}

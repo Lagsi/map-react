@@ -32,12 +32,12 @@ function App() {
   const fetchApiData = async (country) => {
     setLoading(true);
     const response = await fetch(
-      `https://content.guardianapis.com/search?show-tags=contributor&show-references=author&q=${country}&page-size=20&show-fields=all&api-key=${import.meta.env.VITE_GUARDIAN_API
+      `https://content.guardianapis.com/search?show-tags=contributor&show-references=author&q=${country}&page-size=20&show-fields=all&api-key=${
+        import.meta.env.VITE_GUARDIAN_API
       }`
-
     );
     const articles = await response.json();
-    setData(articles.response.results)
+    setData(articles.response.results);
     setLoading(false);
     scrollToNews();
   };
@@ -115,9 +115,11 @@ function App() {
                     />
                   </div>
                   <h2 className="clicked-country">{clickedCountry}</h2>
-                  <div className="articles-container">
-                    <Articles data={data} />
-                  </div>
+                  {data && (
+                    <div className="articles-container">
+                      <Articles data={data} />
+                    </div>
+                  )}
                 </div>
               </>
             }
