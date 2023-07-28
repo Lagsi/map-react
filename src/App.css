@@ -282,8 +282,6 @@ body {
 
 .modal,
 .overlay {
-  width: 100%;
-  height: 100%;
   top: 0;
   font-size: 1rem;
   left: 0;
@@ -310,11 +308,10 @@ body {
 }
 
 .modal-content {
-  padding: 1rem 2rem;
-  margin: 1rem;
+  padding: 2rem 1rem;
   position: relative;
-  height: 700px;
   width: 70%;
+  height: 100%;
   display: block;
   margin: 0 auto;
   overflow: auto;
